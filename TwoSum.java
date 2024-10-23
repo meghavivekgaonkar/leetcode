@@ -10,7 +10,7 @@ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].*/
 import java.util.HashMap;
 import java.util.Map;
 
-class Solution {
+class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer,Integer> hashMap =new HashMap<>();
         int result[] = new int[2];
