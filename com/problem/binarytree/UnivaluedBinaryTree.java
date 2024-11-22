@@ -1,4 +1,4 @@
-package com.binarytree.problem;
+package com.problem.binarytree;
 
 public class UnivaluedBinaryTree {
     public boolean isUnivalTree(TreeNode root) {
