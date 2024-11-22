@@ -30,4 +30,19 @@ class TwoSum {
        
        return result; 
     }
+    //when index is not required and you just need to return true or false
+     public static boolean ifTwoSumExists(int[] arr, int k){
+        Set<Integer> hashSet = new HashSet<>();
+        for( int i = 0; i < arr.length; i++){
+            int diff = k-arr[i];
+            if(!hashSet.contains(diff)){
+                hashSet.add(arr[i]); //add the no. to hashSet 
+
+            }else{
+               return true;
+            }
+        }
+
+       return false;
+    }
 }
