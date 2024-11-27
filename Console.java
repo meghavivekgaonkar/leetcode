@@ -21,63 +21,62 @@ import java.util.Scanner;
 
 public class Console {
     static List<String> commands = new ArrayList<>();
-    
-    public static String execute(String command){
-        
+
+    public static String execute(String command) {
+
         String[] splitC = command.split(" ");
-        String output="";
-       if(splitC[0].equals("ping")){
-        output += splitC[0] + " "+ splitC[1];
-       }
-       if(splitC[0].equals("reboot")){
-        output+= "DENIED";
-       }
-       if(splitC[0].equals("show") && splitC[1].equals("past")){
-        int n =10;
-        if(commands.size() < 10){
-            n= commands.size();
+        String output = "";
+        if (splitC[0].equals("ping")) {
+            output += splitC[0] + " " + splitC[1];
         }
-        List<String> res = new ArrayList<>();
-        for( int i=commands.size()-1; i >= commands.size()-n; i--){
-            res.add(commands.get(i));
+        if (splitC[0].equals("reboot")) {
+            output += "DENIED";
         }
-        Collections.sort(res, Collections.reverseOrder());
-        String arr[] = new String[n];
-        for(int i=0; i< n; i++){
-             arr[i]=res.get(i);
-        }
-        output +=  Arrays.toString(arr);
-        commands.add(command);
+        if (splitC[0].equals("show") && splitC[1].equals("past")) {
+            int n = 10;
+            if (commands.size() < 10) {
+                n = commands.size();
+            }
+            List<String> res = new ArrayList<>();
+            for (int i = commands.size() - 1; i >= commands.size() - n; i--) {
+                res.add(commands.get(i));
+            }
+            Collections.sort(res, Collections.reverseOrder());
+            String arr[] = new String[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = res.get(i);
+            }
+            output += Arrays.toString(arr);
+            commands.add(command);
         }
 
-        if(splitC[0].equals("search")){
+        if (splitC[0].equals("search")) {
             List<String> subList = new ArrayList<>();
             String keyword = splitC[1];
             for (String string : commands) {
-                if(string.contains(keyword)){
-                   subList.add(string);
+                if (string.contains(keyword)) {
+                    subList.add(string);
                 }
-                
+
             }
             output = Arrays.toString(subList.toArray());
 
         }
         return output;
-        
 
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while(true){
+        while (true) {
             System.out.println(">");
             String input = sc.nextLine();
-            if(input.equals(null)){
+            if (input.equals(null)) {
                 input = sc.nextLine();
             }
             System.out.print(execute(input));
         }
-        
+
     }
-    
+
 }
