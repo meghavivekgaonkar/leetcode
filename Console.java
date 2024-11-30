@@ -47,9 +47,7 @@ public class Console {
                 arr[i] = res.get(i);
             }
             output += Arrays.toString(arr);
-            commands.add(command);
         }
-
         if (splitC[0].equals("search")) {
             List<String> subList = new ArrayList<>();
             String keyword = splitC[1];
@@ -62,6 +60,7 @@ public class Console {
             output = Arrays.toString(subList.toArray());
 
         }
+        commands.add(command);
         return output;
 
     }
@@ -69,12 +68,12 @@ public class Console {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println(">");
+            System.out.print(">");
             String input = sc.nextLine();
             if (input.equals(null)) {
                 input = sc.nextLine();
             }
-            System.out.print(execute(input));
+            System.out.println(execute(input));
         }
 
     }
